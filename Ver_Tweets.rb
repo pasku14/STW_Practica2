@@ -43,7 +43,7 @@ if $0 == __FILE__
 
 	Rack::Server.start(
   		:app => Ver_Tweets.new,
-  		:Port => 9999,
+  		:Port => 3030,
   		:server => 'thin'
 	)
 end
