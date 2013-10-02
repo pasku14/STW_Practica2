@@ -24,14 +24,14 @@ class Ver_Tweets
 		req = Rack::Request.new(env)
 		@tweets = []
 		binding.pry if ARGV[0]
-		@usuario = (req["user"] && req["user"] != '' && Twitter.user?(req["user"]) == true) ? req["user"] : ''
+		@usuario = (req["user"] && req["user"] != '' && Twitter.user?(req["user"])) ? req["user"] : ''
  		@n_tweets = (req["n_tw"] && req["n_tw"].to_i > 1) ? req["n_tw"].to_i : 1
 		puts "#{@usuario}"
 
 		if @usuario == req["user"]
 			puts "#{@tweets}"
 			tweet = Twitter.user_timeline(@usuario, {:count => @n_tweets.to_i})
-			@tweets = (@tweets && @tweets != '') ? tweet.map{|i| i.text} : ''
+			@tweets = (@tweets && @tweets != '') ? tweet.map{|i| i.text} : []
 		end
 
 		Rack::Response.new(erb('Ver_Tweets.html.erb'))
