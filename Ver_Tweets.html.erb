@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+	<html>
+	
+		<head>
+		
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+			
+			<style type="text/css">
+			
+				h1 {
+					font-size: 25px;
+					color: blue;
+				}
+
+				h3 {
+					font-size: 19px;
+				}
+				
+			</style>
+			
+			<title>
+				Ver Tweets
+			</title>
+			
+		</head>
+		
+	
+		<body>
+		<div>
+			<form action="/" method="post">
+				<p>Usuario en Twitter: <input type="text" name="user" value="" size="20" maxlength="20" autofocus></br>
+				Numero de Tweets: <input type="text" name="n_tw" value="" size="10" maxlength="10"></br>
+				<input type="submit" value="Enviar"></p>
+			</form>
+		</div>
+		
+		<div>
+			<% if @usuario == '' %>
+				<p font-style:italic; color:red;> Introducir usuario o usuario incorrecto </p>
+			<% else %>
+				<h1> Usuario:</h1>
+				<ol>
+					<h3><%= @usuario %></h3>
+				</ol>
+			<% end %>
+			<% if @usuario != '' %>
+				<h1>Tweets: </h1>
+				<ol> 
+					<% @tweets.each do |i| %>
+						<h3 id="tweet"><%= i %><br/></h3>
+					<% end %>
+				</ol>
+			<% end %>
+		</div>
+		
+		</body>
+	</html>
